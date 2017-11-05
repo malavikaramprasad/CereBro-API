@@ -1,6 +1,10 @@
 class UserParameters < ActionParameter::Base
+  def root_key
+    :user
+  end
+
   def permit
-    params.permit(default_params)
+    pparams.require(root_key).permit(default_params)
   end
 
   def default_params
