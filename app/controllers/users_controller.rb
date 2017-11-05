@@ -1,7 +1,5 @@
 class UsersController < ApiController
-  # before_action :authenticate_user, only: :show
-
-  # Contains User Api Endpoints
+  before_action :authenticate_user, except: :create
 
   def index
     render json: User.all
