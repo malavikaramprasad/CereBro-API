@@ -1,3 +1,3 @@
 class BaseSerializer < ActiveModel::Serializer
-  attributes :name, :email
+  attributes :id, :created_at, :updated_at
 end

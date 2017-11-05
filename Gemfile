@@ -10,6 +10,13 @@ gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'foreman'
 
+# Authentication
+gem 'devise'
+
+# API
+gem 'rack-cors'
+gem 'action_parameter'
+
 # View
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

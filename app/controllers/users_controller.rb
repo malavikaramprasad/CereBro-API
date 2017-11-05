@@ -1,5 +1,5 @@
 class UsersController < ApiController
-  before_action :authenticate_user, only: :show
+  # before_action :authenticate_user, only: :show
 
   # Contains User Api Endpoints
 
@@ -9,6 +9,11 @@ class UsersController < ApiController
 
   def show
     @user = User.find_by_id(params[:id])
+    render json: @user
+  end
+
+  def create
+    @user = User.create!(UserParameters.new(params).permit)
     render json: @user
   end
 end
