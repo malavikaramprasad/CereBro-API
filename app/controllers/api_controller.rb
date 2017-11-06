@@ -11,6 +11,8 @@ class ApiController < ActionController::API
   end
 
   def authenticate_user
-    # Auth Logic goes here
+    # Devise::Strategies::JwtAuthenticatable.authenticate!
+    resource = warden.authenticate!(scope: :user)
+    sign_in(:user, resource)
   end
 end

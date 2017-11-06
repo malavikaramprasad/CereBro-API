@@ -12,6 +12,7 @@ gem 'foreman'
 
 # Authentication
 gem 'devise'
+gem 'jwt'
 
 # API
 gem 'rack-cors'
