@@ -11,8 +11,6 @@ class ApiController < ActionController::API
   end
 
   def authenticate_user
-    # Devise::Strategies::JwtAuthenticatable.authenticate!
-    resource = warden.authenticate!(scope: :user)
-    sign_in(:user, resource)
+    @current_user = User.authenticate_with_token(request.headers['X-Authorization'])
   end
 end

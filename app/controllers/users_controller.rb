@@ -1,5 +1,5 @@
 class UsersController < ApiController
-  # before_action :authenticate_user, except: :create
+  before_action :authenticate_user, except: :create
 
   def index
     render json: User.all
