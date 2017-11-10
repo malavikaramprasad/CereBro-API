@@ -44,7 +44,6 @@ bower.json
 /rdoc/
 
 # Developer-specific files - These have a corresponding *.example file as a template to quickly copy over
-config/database.yml
 .env
 
 ## General
