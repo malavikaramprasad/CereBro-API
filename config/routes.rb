@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :users, defaults: { format: :json }
     resources :tokens
+
+    scope '/current_user' do
+      put '/add_skills' => 'current_user#add_skills'
+      get '/skills' => 'current_user#skills'
+    end
   end
 end

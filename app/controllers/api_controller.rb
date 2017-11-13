@@ -12,5 +12,6 @@ class ApiController < ActionController::API
 
   def authenticate_user
     @current_user = User.authenticate_with_token(request.headers['X-Authorization'])
+    raise Errors::CustomError.new 'User not Logged in' if @current_user.blank?
   end
 end
