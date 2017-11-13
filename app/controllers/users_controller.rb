@@ -13,10 +13,10 @@ class UsersController < ApiController
   def create
     @user = User.create!(UserParameters.new(params).permit)
     token_payload = {
-        user_id: user.email,
-        exp: 1
-      }
-      token = JsonWebToken.encode(token_payload)
+      user_id: @user.email,
+      exp: 1
+    }
+    token = JsonWebToken.encode(token_payload)
     render json: { token: token.to_s }
   end
 end
