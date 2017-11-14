@@ -1,5 +1,5 @@
 class ApiController < ActionController::API
-  around_action :catch_exceptions
+  # around_action :catch_exceptions
   protected
 
   def catch_exceptions

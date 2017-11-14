@@ -2,7 +2,13 @@ class UsersController < ApiController
   before_action :authenticate_user, except: :create
 
   def index
-    render json: User.all
+    if params[:skill].present?
+      @skill = Skill.find_by_name(params[:skill])
+      raise Errors::CustomError.new 'Skill not found' if @skill.blank?
+      render json: @skill.users
+    else
+      render json: User.all
+    end
   end
 
   def show
