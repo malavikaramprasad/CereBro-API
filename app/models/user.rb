@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
+  has_many :preferred_locations, dependent: :destroy
 
   has_many :learner_questions, class_name: 'Question', foreign_key: :learner_id
   has_many :tutor_questions, class_name: 'Question', foreign_key: :tutor_id

@@ -13,4 +13,9 @@ class CurrentUserController < ApiController
   def skills
     render json: @current_user.skills
   end
+
+  def add_preferred_location
+    @current_user.preferred_locations.create!(name: params[:location][:name], x_coordinate: params[:location][:x_coordinate], y_coordinate: params[:location][:y_coordinate])
+    render json: @current_user
+  end
 end
