@@ -3,7 +3,7 @@ class QuestionsController < ApiController
 
   def create
     @question = Question.create!(QuestionParameters.new(params).permit)
-    render json: @question
+    render json: @question.tag.users
   end
 
   def show
