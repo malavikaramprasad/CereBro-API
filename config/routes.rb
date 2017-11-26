@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users
     resources :tokens
     resources :questions
+    resources :reviews
 
     scope '/current_user' do
       get '/' => 'current_user#show'
