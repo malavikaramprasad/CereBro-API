@@ -86,6 +86,16 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.action_mailer.smtp_settings = {
+    address:               'smtp.sendgrid.net',
+    port:                  '587',
+    authentication:        :plain,
+    user_name:             ENV[SENDGRID_USERNAME],
+    password:              ENV[SENDGRID_PASSWORD],
+    domain:                ENV[REMOTE_HOST],
+    enable_starttls_auto:  true
+  }
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end

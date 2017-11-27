@@ -10,7 +10,7 @@ class ReviewsController < ApiController
 		@review = params[:tutor_id].present? ? User.find_by_id(params[:tutor_id]).tutor_reviews : current_user.learner_reviews
 
 		render json: @review
-	end
+	endrais
 
 	def show
 		@review = Review.find_by_id(params[:id])
