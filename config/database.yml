@@ -1,9 +1,9 @@
 base: &base
   adapter: postgresql
   encoding: utf8
-  username: postgres
-  password: test
-  host: localhost
+  username:
+  password:
+  host: 127.0.0.1
   pool: 5
 
 development:
