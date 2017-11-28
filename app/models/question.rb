@@ -4,5 +4,8 @@ class Question < ApplicationRecord
   belongs_to :tutor, class_name: 'User', foreign_key: :tutor_id, optional: true
 
   validates :description, presence: true
-  validates :learner, uniqueness: { scope: :tutor },  unless: Proc.new { |qn| qn.tutor_id.blank? }
+
+  def send_mail
+    UserMailer.send_activation(tutor.email).deliver
+  end
 end
