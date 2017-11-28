@@ -5,6 +5,10 @@ class CurrentUserController < ApiController
     render json: @current_user
   end
 
+  def edit
+
+  end
+
   def add_skills
     @current_user.add_skills(UserSkillParameters.new(params).permit[:skills])
     head :ok, content_type: "application/json"
