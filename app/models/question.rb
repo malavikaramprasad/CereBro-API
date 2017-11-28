@@ -9,6 +9,7 @@ class Question < ApplicationRecord
   validates :learner, uniqueness: { scope: :tutor },  unless: Proc.new { |qn| qn.tutor_id.blank? }
 
   def send_mail
-    UserMailer.send_activation.deliver
+    UserMailer.send_activation(tutor.email).deliver
+    UserMailer.send_activation(learner.email).deliver
   end
 end
