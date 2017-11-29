@@ -8,6 +8,6 @@ class DevicesController < ApplicationController
 
   def destroy
     current_user.devices.where(id: params[:id]).first.destroy
-    render json: { message: 'success' }
+    head :ok, content_type: "application/json"
   end
 end
