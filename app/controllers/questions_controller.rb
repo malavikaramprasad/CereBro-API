@@ -3,7 +3,7 @@ class QuestionsController < ApiController
 
   def create
     logger.debug params
-    logger.debug "Question is : " + params[:question]
+    logger.debug params[:question]
     @question = Question.create!(QuestionParameters.new(params).permit)
     render json: @question.tag.users
   end
