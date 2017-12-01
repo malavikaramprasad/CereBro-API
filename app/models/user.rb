@@ -34,4 +34,8 @@ class User < ApplicationRecord
       skills << newskill
     end
   end
+
+  def rating
+    tutor_reviews.average(:rating)
+  end
 end
