@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get '/' => 'current_user#show'
       put '/add_skills' => 'current_user#add_skills'
       get '/skills' => 'current_user#skills'
+      get 'requests' => 'current_user#requests'
       put '/add_preferred_location' => 'current_user#add_preferred_location'
     end
   end
