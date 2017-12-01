@@ -8,6 +8,7 @@ class UserParameters < ActionParameter::Base
   end
 
   def default_params
-    [:first_name, :last_name, :email, :password, :password_confirmation]
+    [:first_name, :last_name, :email, :password, :password_confirmation, :x_coordinate, :y_coordinate, :start_time, :end_time]
   end
+
 end
