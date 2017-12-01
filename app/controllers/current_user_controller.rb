@@ -5,8 +5,8 @@ class CurrentUserController < ApiController
     render json: @current_user
   end
 
-  def edit
-
+  def update
+    current_user.update(params)
   end
 
   def requests

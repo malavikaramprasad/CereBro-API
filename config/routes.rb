@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     scope '/current_user' do
       get '/' => 'current_user#show'
+      put '/update' => 'current_user#update'
       put '/add_skills' => 'current_user#add_skills'
       get '/skills' => 'current_user#skills'
       get 'requests' => 'current_user#requests'
