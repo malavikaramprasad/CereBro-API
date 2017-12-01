@@ -15,9 +15,9 @@ class Question < ApplicationRecord
   has_many :reviews
 
   validates :description, presence: true
-  
 
-  after_create :send_mail
+
+  # after_create :send_mail
 
   def send_mail
     UserMailer.send_activation(tutor.email,REQUEST_TEXT,REQUEST_SUBJECT).deliver
