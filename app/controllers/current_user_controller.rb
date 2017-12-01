@@ -9,6 +9,10 @@ class CurrentUserController < ApiController
 
   end
 
+  def requests
+    render json: { accepted: @current_user.tutor_questions.where(tutor_accepted: true) ,pending: @current_user.tutor_questions.where(tutor_accepted: false)}
+  end
+
   def add_skills
     @current_user.add_skills(UserSkillParameters.new(params).permit[:skills])
     head :ok, content_type: "application/json"
