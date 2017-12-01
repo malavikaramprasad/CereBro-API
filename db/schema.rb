@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126022304) do
+ActiveRecord::Schema.define(version: 20171129011015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "devices", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "token"
+    t.string "uid"
+    t.string "os_version"
+    t.string "platform"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_devices_on_user_id"
+  end
 
   create_table "preferred_locations", force: :cascade do |t|
     t.string "name"
@@ -32,6 +43,7 @@ ActiveRecord::Schema.define(version: 20171126022304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tutor_id"
+    t.boolean "tutor_accepted"
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -18,6 +18,10 @@ gem 'jwt'
 gem 'rack-cors'
 gem 'action_parameter'
 
+# Google
+gem 'google-api-client'
+gem 'fcm'
+
 # View
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
