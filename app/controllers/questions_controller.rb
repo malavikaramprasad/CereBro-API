@@ -3,15 +3,20 @@ class QuestionsController < ApiController
   before_action :set_question, except: :create
 
   def create
-    logger.debug params
-    logger.debug params[:question]
-    @question = Question.create(QuestionParameters.new(params).permit)
-    logger.debug @question.errors
+    @question = Question.create!(QuestionParameters.new(params).permit)
     render json: @question.tag.users
   end
 
   def show
     render json: @question
+  end
+
+  def request_tutor
+    tutor = Tutor.find_by_id(params[:tutor_id])
+    if tutor.present?
+      @question.update(tutor_id: params[tutor_id], start_time: params[:start_time], end_time: params[:end_time])
+      render json: @question
+    end
   end
 
   def accept

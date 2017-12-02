@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get '/skills' => 'current_user#skills'
       get 'requests' => 'current_user#requests'
       put '/add_preferred_location' => 'current_user#add_preferred_location'
+      put '/request_tutor' => 'current_user#request_tutor'
     end
   end
 end

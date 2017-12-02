@@ -6,7 +6,8 @@ class CurrentUserController < ApiController
   end
 
   def update
-    current_user.update(params)
+    current_user.update(UserParameters.new(params).permit_edit)
+    render json: current_user
   end
 
   def requests
