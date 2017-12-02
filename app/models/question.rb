@@ -32,14 +32,12 @@ class Question < ApplicationRecord
   end
 
   def accept!
-    tutor_accepted = true
-    save!
+    update(tutor_accepted: true)
     send_accepted_mail
   end
 
   def reject!
-    tutor_accepted = false
-    save!
+    update(tutor_accepted: false)
     send_rejected_mail
   end
 end

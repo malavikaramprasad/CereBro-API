@@ -11,7 +11,9 @@ class CurrentUserController < ApiController
   end
 
   def requests
-    render json: { accepted: @current_user.tutor_questions.where(tutor_accepted: true) ,pending: @current_user.tutor_questions.where(tutor_accepted: false)}
+    @accepted = @current_user.tutor_questions.where(tutor_accepted: true)
+    @pending = @current_user.tutor_questions.where(tutor_accepted: nil)
+    render json: { accepted: @accepted ,pending: @pending }
   end
 
   def add_skills
