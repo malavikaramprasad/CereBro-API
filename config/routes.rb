@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :users
     resources :tokens
-    resources :questions
+    resources :questions do
+      member do
+        put '/request_tutor' => 'questions#request_tutor'
+      end
+    end
     resources :reviews
     resources :skills
     resources :devices

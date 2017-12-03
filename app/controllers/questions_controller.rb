@@ -12,11 +12,13 @@ class QuestionsController < ApiController
   end
 
   def request_tutor
-    tutor = Tutor.find_by_id(params[:tutor_id])
-    if tutor.present?
-      @question.update(tutor_id: params[tutor_id], start_time: params[:start_time], end_time: params[:end_time])
-      render json: @question
-    end
+    tutor = User.find_by_id(params[:tutor_id])
+
+    @question.tutor = tutor if tutor.present?
+    @question.start_time = Date.parse(params[:start_time]) if params.has_key?(:start_time) && params[:start_time].present?
+    @question.start_time = Date.parse(params[:end_time]) if params.has_key?(:end_time) && params[:end_time].present?
+    @question.save!
+    render json: @question
   end
 
   def accept
