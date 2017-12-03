@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :learner_reviews, through: :learner_questions,  class_name: 'Review', source: :reviews
   has_many :tutor_reviews, through: :tutor_questions, class_name: 'Review', source: :reviews
 
+  has_many :devices, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable

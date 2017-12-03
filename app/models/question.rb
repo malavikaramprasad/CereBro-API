@@ -16,8 +16,15 @@ class Question < ApplicationRecord
 
   validates :description, presence: true
 
+  after_save :send_tutor_notification, if: Proc.new { |obj| obj.tutor_id_changed? }
+
 
   # after_create :send_mail
+
+  def send_tutor_notification
+    message = "You have been requested to answer a question"
+    PushNotifier::notify(message, self)
+  end
 
   def send_mail
     UserMailer.send_activation(tutor.email,REQUEST_TEXT,REQUEST_SUBJECT).deliver

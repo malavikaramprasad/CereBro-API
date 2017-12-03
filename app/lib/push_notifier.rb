@@ -1,15 +1,13 @@
 class PushNotifier
-  def self.notify(users, data)
-    notification_data = { data: { call: NotificationSerializer.new(data).to_json }}
-    registration_tokens = []
-    users.each do |x|
-      registration_tokens << x.devices.last.try(:token)
-    end
+  def self.notify(message, data)
+    notification_data = { data: { message: message, question: QuestionSerializer.new(data).to_json }}
 
-    raise Errors::CustomError.new 'Registration IDs are empty' if registration_tokens.blank?
+    registration_token = data.tutor.devices.last.try(:token)
+
+    raise Errors::CustomError.new 'Registration IDs are empty' if registration_token.blank?
 
     fcm = FCM.new(Rails.application.secrets.fcm_api_key)
-    response = fcm.send(registration_tokens.compact, notification_data)
+    response = fcm.send(registration_token, notification_data)
     Rails.logger.info response
   end
 end
