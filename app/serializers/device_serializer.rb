@@ -1,3 +1,3 @@
 class DeviceSerializer < BaseSerializer
-  attributes :token, :uid, :platform, :os_version
+  attributes :user_id, :token, :uid, :platform, :os_version
 end
