@@ -1,4 +1,4 @@
-class DevicesController < ApplicationController
+class DevicesController < ApiController
   before_action :authenticate_user
 
   def create
