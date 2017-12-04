@@ -4,7 +4,7 @@ class QuestionsController < ApiController
 
   def create
     @question = Question.create!(QuestionParameters.new(params).permit)
-    render json: @question.tag.users
+    render json: @question.tag.users.where.not(id: current_user.id)
   end
 
   def show
