@@ -1,6 +1,6 @@
 class PushNotifier
   def self.notify(message, data)
-    notification_data = { data: { message: message, question: QuestionSerializer.new(data).to_json }}
+    notification_data = { data: { message: message, question_id: data.id, question: QuestionSerializer.new(data).to_json }}
 
     registration_tokens = [data.tutor.devices.last.try(:token)]
 
