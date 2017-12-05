@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :questions do
       member do
         put '/request_tutor' => 'questions#request_tutor'
+        put '/accept' => 'questions#accept'
+        put 'reject' => 'questions#reject'
       end
     end
     resources :reviews
