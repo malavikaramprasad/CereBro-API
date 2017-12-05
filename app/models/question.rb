@@ -16,7 +16,7 @@ class Question < ApplicationRecord
 
   validates :description, presence: true
 
-  after_save :send_mail, :send_accepted_email, :send_tutor_notification, if: Proc.new { |obj| obj.tutor_id_changed? }
+  after_save :send_mail, :send_accepted_mail, :send_tutor_notification, if: Proc.new { |obj| obj.tutor_id_changed? }
 
 
   # after_create :send_mail
