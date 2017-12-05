@@ -17,7 +17,7 @@ class CurrentUserController < ApiController
   end
 
   def add_skills
-    @current_user.add_skills(UserSkillParameters.new(params).permit[:skills])
+    @current_user.add_skills(params[:skill])
     render json: @current_user
   end
 
