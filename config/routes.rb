@@ -18,7 +18,8 @@ Rails.application.routes.draw do
       put '/update' => 'current_user#update'
       put '/add_skills' => 'current_user#add_skills'
       get '/skills' => 'current_user#skills'
-      get 'requests' => 'current_user#requests'
+      get 'tutor_requests' => 'current_user#tutor_requests'
+      get 'learner_requests' => 'current_user#learner_requests'
       put '/add_preferred_location' => 'current_user#add_preferred_location'
       put '/request_tutor' => 'current_user#request_tutor'
     end

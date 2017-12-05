@@ -10,9 +10,15 @@ class CurrentUserController < ApiController
     render json: current_user
   end
 
-  def requests
+  def tutor_requests
     @accepted = @current_user.tutor_questions.where(tutor_accepted: true)
     @pending = @current_user.tutor_questions.where(tutor_accepted: nil)
+    render json: { accepted: @accepted ,pending: @pending }
+  end
+
+  def learner_requests
+    @accepted = @current_user.learner_questions.where(tutor_accepted: true)
+    @pending = @current_user.learner_questions.where(tutor_accepted: nil)
     render json: { accepted: @accepted ,pending: @pending }
   end
 
