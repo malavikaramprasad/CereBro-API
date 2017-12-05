@@ -19,7 +19,7 @@ class QuestionsController < ApiController
 
     @question.tutor = tutor if tutor.present?
     @question.start_time = Date.parse(params[:start_time]) if params.has_key?(:start_time) && params[:start_time].present?
-    @question.start_time = Date.parse(params[:end_time]) if params.has_key?(:end_time) && params[:end_time].present?
+    @question.end_time = Date.parse(params[:end_time]) if params.has_key?(:end_time) && params[:end_time].present?
     @question.save
     Rails.logger.info '*********************'
     Rails.logger.info @question.errors
